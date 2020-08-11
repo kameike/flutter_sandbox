@@ -2,13 +2,17 @@
 
 ## 単純なキャッチアップ
 - [x] よーわからんが動かす
-- [ ] ちょびっと凝ったUIをつくる 
-- [ ] アニメーションさせる
+- [ ] Weekly Flutterを#80まで見る
+
+- [ ] ClipRect
 - [ ] ListUI
+- [ ] AnimatedContainer
+- [ ] Hero
+- [ ] SliverAppBar
+- [ ] InheritedModel
+- [ ] ValueListenableBuilder
 - [ ] CollectionUI
-- [ ] iOSっぽいUI
 - [ ] 画面の遷移
-- [ ] UIのコンポーネント化
 
 ## 通信
 - [ ] json
