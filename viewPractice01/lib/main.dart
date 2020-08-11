@@ -6,6 +6,7 @@ void main() {
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,7 +27,29 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: TestViewComponents(),
+    );
+  }
+}
+
+class TestViewComponents extends StatelessWidget {
+  Widget build(BuildContext conteext) {
+    return Container(
+      margin: EdgeInsets.only(left: 10, top: 100, bottom: 100, right: 20),
+      color: Colors.red,
+      child: Container(
+        color: Colors.green,
+        margin: EdgeInsets.only(left: 10, right: 10),
+        child: Column(
+          children: <Widget>[
+            Text("hgoe"),
+            Text("piyo"),
+            Text("fuga"),
+            Text("toyo"),
+            Text("tsuka"),
+          ],
+        ),
+      ),
     );
   }
 }
@@ -98,7 +121,7 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              ' have pushed the button this many times:',
             ),
             Text(
               '$_counter',
