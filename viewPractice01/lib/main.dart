@@ -33,23 +33,79 @@ class MyApp extends StatelessWidget {
 }
 
 class TestViewComponents extends StatelessWidget {
-  Widget build(BuildContext conteext) {
+  Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(left: 10, top: 100, bottom: 100, right: 20),
-      color: Colors.red,
+      color: Colors.grey,
       child: Container(
-        color: Colors.green,
+        color: Colors.white,
         margin: EdgeInsets.only(left: 10, right: 10),
-        child: Column(
-          children: <Widget>[
-            Text("hgoe"),
-            Text("piyo"),
-            Text("fuga"),
-            Text("toyo"),
-            Text("tsuka"),
-          ],
-        ),
+        child: NewWidget(),
       ),
+    );
+  }
+}
+
+class NewWidget extends StatelessWidget {
+  const NewWidget({
+    Key key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: <Widget>[
+        Container(
+          margin: EdgeInsets.only(left: 20, right: 20, top: 20),
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    child: Container(
+                      width: 80,
+                      height: 80,
+                      margin: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.brown,
+                          borderRadius: BorderRadius.all(Radius.circular(1000)),
+                          image: DecorationImage(
+                            image: NetworkImage(
+                                'https://pbs.twimg.com/profile_images/378800000544535184/9bd879417976fbfc5477155fddd7ca74_400x400.png'),
+                            fit: BoxFit.cover,
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 0,
+                              blurRadius: 7,
+                              offset:
+                                  Offset(0, 0), // changes position of shadow
+                            ),
+                          ]),
+                    ),
+                  ),
+                  Flexible(
+                    flex: 5,
+                    child: Text("kameike",
+                        style: Theme.of(context).textTheme.headline4),
+                  ),
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(
+                      "タイミーの プロダクトの最高責任者(CPO)やってます。 理想的なフローで理想的なチームで理想的なプロダクトをつくりたい。エンジニアリング、サービス設計、組織やチームワークについて情報を呟きます。リーンに始まりものづくりのプロセスが好きです。",
+                      style: Theme.of(context).textTheme.bodyText2,
+                    ),
+                  )
+                ],
+              ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
