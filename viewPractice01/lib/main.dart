@@ -34,78 +34,186 @@ class MyApp extends StatelessWidget {
 
 class TestViewComponents extends StatelessWidget {
   Widget build(BuildContext context) {
+    var data = [
+      {
+        "icon": "https://github.com/identicons/bbb.png",
+        "name": "bbb",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/ccc.png",
+        "name": "ccc",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/100.png",
+        "name": "100",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/101.png",
+        "name": "101",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/108.png",
+        "name": "108",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/110.png",
+        "name": "110",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/109.png",
+        "name": "109",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/108.png",
+        "name": "108",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/107.png",
+        "name": "107",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/106.png",
+        "name": "106",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/105.png",
+        "name": "105",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/104.png",
+        "name": "104",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/103.png",
+        "name": "103",
+        "description": "this is the description",
+      },
+      {
+        "icon": "https://github.com/identicons/102.png",
+        "name": "102",
+        "description": "this is the description",
+      },
+      {
+        "icon":
+            'https://pbs.twimg.com/profile_images/378800000544535184/9bd879417976fbfc5477155fddd7ca74_400x400.png',
+        "name": 'kameike',
+        "description": 'this is the description',
+      }
+    ];
+
     return Container(
-      margin: EdgeInsets.only(left: 10, top: 100, bottom: 100, right: 20),
-      color: Colors.grey,
-      child: Container(
-        color: Colors.white,
         margin: EdgeInsets.only(left: 10, right: 10),
-        child: NewWidget(),
-      ),
-    );
+        child: ListView.separated(
+          itemBuilder: (BuildContext context, int index) {
+            var d = data[index];
+            return NewWidget(
+              imageUrl: d["icon"],
+              name: d["name"],
+              description: d["description"],
+            );
+          },
+          itemCount: data.length,
+          separatorBuilder: (BuildContext context, int index) => Divider(
+            color: Colors.transparent,
+          ),
+        ));
   }
 }
 
 class NewWidget extends StatelessWidget {
   const NewWidget({
     Key key,
+    this.name,
+    this.imageUrl,
+    this.description,
   }) : super(key: key);
+
+  final String name;
+  final String imageUrl;
+  final String description;
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Container(
-          margin: EdgeInsets.only(left: 20, right: 20, top: 20),
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Container(
-                    child: Container(
-                      width: 80,
-                      height: 80,
-                      margin: EdgeInsets.all(10),
-                      decoration: BoxDecoration(
-                          color: Colors.brown,
-                          borderRadius: BorderRadius.all(Radius.circular(1000)),
-                          image: DecorationImage(
-                            image: NetworkImage(
-                                'https://pbs.twimg.com/profile_images/378800000544535184/9bd879417976fbfc5477155fddd7ca74_400x400.png'),
-                            fit: BoxFit.cover,
-                          ),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withOpacity(0.5),
-                              spreadRadius: 0,
-                              blurRadius: 7,
-                              offset:
-                                  Offset(0, 0), // changes position of shadow
+    return Container(
+      padding: EdgeInsets.all(20),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(10)),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.grey.withOpacity(0.5),
+            spreadRadius: 0,
+            blurRadius: 7,
+          )
+        ],
+      ),
+      child: Column(
+        children: <Widget>[
+          Container(
+            margin: EdgeInsets.only(left: 20, right: 20),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.only(bottom: 10),
+                      child: Container(
+                        width: 80,
+                        height: 80,
+                        margin: EdgeInsets.only(right: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.brown,
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(1000)),
+                            image: DecorationImage(
+                              image: NetworkImage(imageUrl),
+                              fit: BoxFit.cover,
                             ),
-                          ]),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 0,
+                                blurRadius: 7,
+                                offset:
+                                    Offset(0, 0), // changes position of shadow
+                              ),
+                            ]),
+                      ),
                     ),
-                  ),
-                  Flexible(
-                    flex: 5,
-                    child: Text("kameike",
-                        style: Theme.of(context).textTheme.headline4),
-                  ),
-                ],
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(
-                      "タイミーの プロダクトの最高責任者(CPO)やってます。 理想的なフローで理想的なチームで理想的なプロダクトをつくりたい。エンジニアリング、サービス設計、組織やチームワークについて情報を呟きます。リーンに始まりものづくりのプロセスが好きです。",
-                      style: Theme.of(context).textTheme.bodyText2,
+                    Flexible(
+                      flex: 5,
+                      child: Text(name,
+                          style: Theme.of(context).textTheme.headline4),
                     ),
-                  )
-                ],
-              ),
-            ],
+                  ],
+                ),
+                Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        description,
+                        style: Theme.of(context).textTheme.bodyText2,
+                      ),
+                    )
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
