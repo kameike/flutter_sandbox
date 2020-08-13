@@ -3,16 +3,18 @@
 ## 単純なキャッチアップ
 - [x] よーわからんが動かす
 - [ ] Weekly Flutterを#80まで見る
+- [x] nvimである程度スムーズに開発できるようにする
+- [ ] ディレクトリの切り分け
 
 - [ ] ClipRect
-- [ ] ListUI
+- [x] ListUI
+- [ ] 画面の遷移
 - [ ] AnimatedContainer
 - [ ] Hero
 - [ ] SliverAppBar
 - [ ] InheritedModel
 - [ ] ValueListenableBuilder
 - [ ] CollectionUI
-- [ ] 画面の遷移
 
 ## 通信
 - [ ] json
