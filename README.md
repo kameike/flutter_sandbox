@@ -2,11 +2,10 @@
 
 ## 単純なキャッチアップ
 - [x] よーわからんが動かす
-- [ ] Weekly Flutterを#80まで見る
+- [x] Weekly Flutterを#80まで見る
 - [x] nvimである程度スムーズに開発できるようにする
-- [ ] ディレクトリの切り分け
+- [x] ディレクトリの切り分け
 
-- [ ] ClipRect
 - [x] ListUI
 - [ ] 画面の遷移
 - [ ] AnimatedContainer
@@ -15,6 +14,8 @@
 - [ ] InheritedModel
 - [ ] ValueListenableBuilder
 - [ ] CollectionUI
+- [ ] 件のUI模写
+- [ ] [すごいブログ読む](https://itome.team/blog/2019/12/flutter-advent-calendar-day26/)
 
 ## 通信
 - [ ] json
