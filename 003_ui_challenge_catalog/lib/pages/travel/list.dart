@@ -107,12 +107,10 @@ class TravelListCell extends StatelessWidget {
                   children: [
                     SizedBox(
                       width: double.infinity,
-                      child: Text(d.title,
-                          style: TextStyle(
-                            color: kColorText,
-                            fontSize: 20,
-                            fontWeight: FontWeight.w600,
-                          )),
+                      child: Text(
+                        d.title,
+                        style: kTitleStyle,
+                      ),
                     ),
                     SizedBox(
                       width: double.infinity,
@@ -134,11 +132,7 @@ class TravelListCell extends StatelessWidget {
                       width: double.infinity,
                       child: Text(
                         d.address,
-                        style: TextStyle(
-                          color: kColorText,
-                          fontSize: 16,
-                          fontWeight: FontWeight.w300,
-                        ),
+                        style: kDetailText,
                         textAlign: TextAlign.left,
                         overflow: TextOverflow.ellipsis,
                       ),

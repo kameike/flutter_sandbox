@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import './constants.dart';
 
-final listMargin = EdgeInsets.only(left: 20, right: 20);
+final listMargin = EdgeInsets.only(left: kDefaultMargin, right: kDefaultMargin);
 
 class TopContentData {
   const TopContentData({
@@ -19,12 +19,22 @@ class TopContentData {
   }
 
   String get allWorkTimeString {
-    return "50時間20分";
+    return "50時間50分";
   }
 
   String get limitString {
     return "応募可能人数 2名まで";
   }
+}
+
+class PhotoAndDescription {
+  const PhotoAndDescription({
+    @required this.imageURL,
+    @required this.description,
+  });
+
+  final String imageURL;
+  final String description;
 }
 
 class TravelDetailPage extends StatelessWidget {
@@ -37,74 +47,260 @@ class TravelDetailPage extends StatelessWidget {
     );
 
     var child = SizedBox(
-      height: 20,
+      height: kDefaultMargin,
       width: double.infinity,
     );
 
-    var text =
+    var aboutText =
         "地球科学系で「天然」を頭高型アクセント(て↑んねん)で発音するの何故なんだろうか。知り合いに聞いた限りでは化学系や農学系は平板型で発音しているようなので理系一般の文化でもなさそうだし";
+
+    var photos = [
+      PhotoAndDescription(
+        imageURL:
+            "https://www.orion-tour.co.jp/air/fair/kyusyu/yakushima/img/keyword_img03.jpg",
+        description: "太古からの記憶を今に伝える1000年以上の樹齢を誇る巨樹",
+      ),
+      PhotoAndDescription(
+        imageURL:
+            "https://www.orion-tour.co.jp/air/fair/kyusyu/yakushima/img/keyword_img06.jpg",
+        description: "コケに愛される緑の楽園",
+      ),
+      PhotoAndDescription(
+        imageURL:
+            "https://www.orion-tour.co.jp/air/fair/kyusyu/yakushima/img/keyword_img05.jpg",
+        description: "芸術作品のような巨石の謎",
+      ),
+    ];
+
+    var items = [
+      "交通費",
+      "宿泊施設",
+      "昼食",
+      "トイレ",
+      "風呂",
+      "洗面所",
+      "Wi-Fi",
+      "冷暖房",
+      "電気ケトル",
+      "ハンガー",
+      "アイロン",
+    ];
+
+    var checkList = [
+      "筆記用具",
+      "タオル",
+      "着替え",
+      "ハンカチ",
+      "軍手",
+      "サンダル",
+      "30L以上のリュックサック",
+    ];
+
     return Scaffold(
+      // appBar: AppBar(
+      //   backgroundColor: kColorWhite,
+      //   shadowColor: Color.fromARGB(30, 0, 0, 0),
+      //   title: Text("トラベルバイト詳細", style: kTitleStyle),
+      //   leading: BackButton(color: kColorText),
+      // ),
       body: Container(
         color: kColorBG,
-        child: ListView(children: <Widget>[
-          DetailText(
-            title: "このトラベルについて",
-            text: text,
-          ),
-          DetailText(
-              title: "このトラベルにつて",
-              text:
-                  "国内線の飛行機で前後の席に乗り合わせた人同士が感染です。 　千葉県によりますと、13日に八千代市の40代の男性が感染していることが確認されました。男性は3日に成田空港に到着した国内線の飛行機に乗っていて、この男性の前の席に座っていた20代の男性警察官が9日に感染が確認されたため濃厚接触者として検査を受けていました。2人に面識はなく会話もありませんでした。"),
-          RoundWraper(
-            child: Column(
-              children: <Widget>[
-                Container(
-                  padding: EdgeInsets.all(15),
-                  margin: EdgeInsets.all(20),
-                  decoration: BoxDecoration(
-                    color: kColorGray,
-                    borderRadius: BorderRadius.circular(10),
+        child: CustomScrollView(
+          slivers: <Widget>[
+            SliverAppBar(
+              expandedHeight: MediaQuery.of(context).size.height / 2,
+              flexibleSpace: FlexibleSpaceBar(
+                background: Stack(children: [
+                  SizedBox(
+                    width: double.infinity,
+                    height: double.infinity,
+                    child: Image.network(
+                        "https://www.orion-tour.co.jp/air/fair/kyusyu/yakushima/img/keyword_img06.jpg",
+                        fit: BoxFit.cover),
                   ),
-                  child: Column(
-                    children: [
-                      RequeirmentRow(
-                        icondata: IconData(59387, fontFamily: 'MaterialIcons'),
-                        text: tcd.limitString,
+                  Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          const Color(0xffffffff),
+                          const Color(0x00ffffff),
+                        ],
+                        stops: const [
+                          0.0,
+                          0.8,
+                        ],
+                        begin: FractionalOffset.topCenter,
+                        end: FractionalOffset.bottomCenter,
                       ),
-                      RequeirmentRow(
-                        icondata: IconData(57544, fontFamily: 'MaterialIcons'),
-                        text: tcd.address,
-                      ),
-                      RequeirmentRow(
-                        icondata: IconData(59701, fontFamily: 'MaterialIcons'),
-                        text: tcd.dateString,
-                      ),
-                      RequeirmentRow(
-                        icondata: IconData(57746, fontFamily: 'MaterialIcons'),
-                        text: tcd.allWorkTimeString,
-                      ),
-                      RequeirmentRow(
-                        icondata: IconData(57922, fontFamily: 'MaterialIcons'),
-                        text: tcd.summary,
-                      ),
-                    ],
+                    ),
+                    child: SizedBox(
+                        width: double.infinity, height: double.infinity),
                   ),
-                ),
-              ],
+                ]),
+                stretchModes: [StretchMode.zoomBackground],
+              ),
+              pinned: true,
+              backgroundColor: kColorWhite,
+              shadowColor: Color.fromARGB(30, 0, 0, 0),
+              title: Text("トラベルバイト詳細", style: kTitleStyle),
+              leading: BackButton(color: kColorText),
             ),
-          ),
-          DetailContainer(title: "このトラベルについて", child: child),
-          DetailContainer(title: "このトラベルについて", child: child),
-          DetailContainer(title: "このトラベルについて", child: child),
-          DetailContainer(title: "このトラベルについて", child: child),
-        ]),
+            SliverToBoxAdapter(child: SizedBox(height: kDefaultMargin)),
+            SliverToBoxAdapter(child: Top(tcd: tcd)),
+            SliverToBoxAdapter(
+                child: DetailText(title: "このトラベルについて", text: aboutText)),
+            SliverToBoxAdapter(child: PhotoList(photos: photos)),
+            SliverToBoxAdapter(
+                child: DetailText(title: "スケジュールの一例", text: aboutText)),
+            SliverToBoxAdapter(
+                child: CheckList(title: "準備されるもの", checkList: items)),
+            SliverToBoxAdapter(
+                child: CheckList(title: "当日の持ち物", checkList: checkList)),
+          ],
+          physics:
+              BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+        ),
       ),
     );
   }
 }
 
-class RequeirmentRow extends StatelessWidget {
-  const RequeirmentRow({
+class CheckList extends StatelessWidget {
+  const CheckList({
+    Key key,
+    @required this.checkList,
+    @required this.title,
+  }) : super(key: key);
+
+  final List<String> checkList;
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return DetailContainer(
+        title: title,
+        child: Column(
+          children: checkList
+              .map((check) => Padding(
+                    padding: const EdgeInsets.only(bottom: 10),
+                    child: Row(children: [
+                      Padding(
+                        padding: const EdgeInsets.only(right: 6),
+                        child: Icon(
+                            IconData(58826, fontFamily: 'MaterialIcons'),
+                            size: 16,
+                            color: Color.fromARGB(255, 112, 211, 139)),
+                      ),
+                      Expanded(
+                        child: Text(check),
+                      )
+                    ]),
+                  ))
+              .toList(),
+        ));
+  }
+}
+
+class PhotoList extends StatelessWidget {
+  const PhotoList({
+    Key key,
+    @required this.photos,
+  }) : super(key: key);
+
+  final List<PhotoAndDescription> photos;
+
+  @override
+  Widget build(BuildContext context) {
+    return DetailContainer(
+      title: "受け入れ先の雰囲気",
+      child: Column(
+        children: photos.map(
+          (data) {
+            return Column(
+              children: [
+                SizedBox(
+                  width: double.infinity,
+                  child: AspectRatio(
+                    aspectRatio: 16 / 9,
+                    child: Image.network(data.imageURL, fit: BoxFit.cover),
+                  ),
+                ),
+                SizedBox(
+                  width: double.infinity,
+                  child: Text(data.description, style: kDetailText),
+                ),
+                SizedBox(
+                  height: kDefaultMargin,
+                ),
+              ],
+            );
+          },
+        ).toList(),
+      ),
+    );
+  }
+}
+
+class Top extends StatelessWidget {
+  const Top({
+    Key key,
+    @required this.tcd,
+  }) : super(key: key);
+
+  final TopContentData tcd;
+
+  @override
+  Widget build(BuildContext context) {
+    return RoundWraper(
+      child: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.only(
+                left: kDefaultMargin,
+                right: kDefaultMargin,
+                top: kDefaultMargin),
+            child: Text(tcd.title, style: kTitleStyle),
+          ),
+          Container(
+            padding: EdgeInsets.all(15),
+            margin: EdgeInsets.all(kDefaultMargin),
+            decoration: BoxDecoration(
+              color: kColorGray,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Column(
+              children: [
+                RequirementRowForTop(
+                  icondata: IconData(59387, fontFamily: 'MaterialIcons'),
+                  text: tcd.limitString,
+                ),
+                RequirementRowForTop(
+                  icondata: IconData(57544, fontFamily: 'MaterialIcons'),
+                  text: tcd.address,
+                ),
+                RequirementRowForTop(
+                  icondata: IconData(59701, fontFamily: 'MaterialIcons'),
+                  text: tcd.dateString,
+                ),
+                RequirementRowForTop(
+                  icondata: IconData(57746, fontFamily: 'MaterialIcons'),
+                  text: tcd.allWorkTimeString,
+                ),
+                RequirementRowForTop(
+                  icondata: IconData(57922, fontFamily: 'MaterialIcons'),
+                  text: tcd.summary,
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class RequirementRowForTop extends StatelessWidget {
+  const RequirementRowForTop({
     Key key,
     @required this.icondata,
     @required this.text,
@@ -159,7 +355,7 @@ class DetailText extends StatelessWidget {
       title: title,
       child: SizedBox(
         width: double.infinity,
-        child: Text(text),
+        child: Text(text, style: kDetailText),
       ),
     );
   }
@@ -179,7 +375,7 @@ class DetailContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     return RoundWraper(
       child: Container(
-        padding: EdgeInsets.all(20),
+        padding: EdgeInsets.all(kDefaultMargin),
         child: Column(
           children: <Widget>[
             SizedBox(
@@ -188,7 +384,7 @@ class DetailContainer extends StatelessWidget {
                 title,
                 style: TextStyle(
                   color: kColorText,
-                  fontSize: 20,
+                  fontSize: kDefaultMargin,
                   fontWeight: FontWeight.w600,
                 ),
                 textAlign: TextAlign.left,
@@ -215,10 +411,10 @@ class RoundWraper extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         color: kColorWhite,
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        borderRadius: BorderRadius.all(Radius.circular(kDefaultMargin)),
         boxShadow: [kShadow],
       ),
-      margin: listMargin.add(EdgeInsets.only(bottom: 20)),
+      margin: listMargin.add(EdgeInsets.only(bottom: kDefaultMargin)),
       child: child,
     );
   }
