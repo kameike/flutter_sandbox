@@ -6,20 +6,23 @@
 - [x] nvimである程度スムーズに開発できるようにする
 - [x] ディレクトリの切り分け
 - [x] ListUI
-- [ ] 見えなくなったら消すタイプのList
-- [ ] 適当なWidgetのコード読む
-- [ ] 画面の遷移
-- [ ] 件のUI模写
+- [x] 画面の遷移
+- [x] 件のUI模写
+- [x] StateFullWidget
+- [x] InheritedWidget
+- [x] SliverAppBar
+- [x] provider
+- [ ] providerの[コード読む](https://github.com/rrousselGit/provider)
+- [x] nextedの[コード読む](https://github.com/rrousselGit/nested/blob/master/lib/nested.dart)
 - [ ] AnimatedContainer
 - [ ] Hero
-- [ ] SliverAppBar
-- [ ] InheritedModel
 - [ ] ValueListenableBuilder
 - [ ] CollectionUI
 - [ ] [すごいブログ読む](https://itome.team/blog/2019/12/flutter-advent-calendar-day26/)
 
 ## 環境整備
 - [ ] DevTool入れる
+- [ ] 環境をAndroidStudioにする
 
 ## 通信
 - [ ] json

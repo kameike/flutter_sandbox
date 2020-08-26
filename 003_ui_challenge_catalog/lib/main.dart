@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 import './pages/travel/list.dart';
+import './pages/twitter/page.dart';
+import './pages/scrollWithAnimation/main.dart';
+import './pages/primevideo/page.dart';
+import './pages/pageTest/page.dart';
+import './pages/inherited/page.dart';
+import './pages/provider/page.dart';
 
 void main() {
   runApp(RootPage());
@@ -12,6 +18,51 @@ class SubPage {
   final String title;
   final DateTime timestamp;
 }
+
+final pageData = <SubPage>[
+  SubPage(
+      title: 'copy of timee travel',
+      timestamp: DateTime.now(),
+      build: (context) {
+        return TravelListPage();
+      }),
+  SubPage(
+      title: 'copy of twitter',
+      timestamp: DateTime.now(),
+      build: (context) {
+        return TwitterPage();
+      }),
+  SubPage(
+      title: 'scroll animation',
+      timestamp: DateTime.now(),
+      build: (context) {
+        return AnimateOnScrollFlutter();
+      }),
+  SubPage(
+      title: 'prime video trace',
+      timestamp: DateTime.now(),
+      build: (context) {
+        return PrimeVideoPage();
+      }),
+  SubPage(
+      title: 'page call back test',
+      timestamp: DateTime.now(),
+      build: (context) {
+        return PageingDelegationTest();
+      }),
+  SubPage(
+      title: 'inherited widget',
+      timestamp: DateTime.now(),
+      build: (context) {
+        return CarouselWidget();
+      }),
+  SubPage(
+      title: 'provider',
+      timestamp: DateTime.now(),
+      build: (context) {
+        return ProviderTest();
+      }),
+];
 
 final kColorShadow = Color.fromARGB(30, 0, 0, 0);
 final kColorBackGround = Colors.white;
@@ -76,12 +127,3 @@ class ComponentCell extends StatelessWidget {
     );
   }
 }
-
-final pageData = <SubPage>[
-  SubPage(
-      title: 'TestPage1',
-      timestamp: DateTime.now(),
-      build: (context) {
-        return TravelListPage();
-      }),
-];
